@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Partition avec Curseur et Audio</title>
+  <script src="https://cdn.jsdelivr.net/npm/opensheetmusicdisplay@1.5.4/build/opensheetmusicdisplay.min.js"></script>
+  <style>
+    #container {
+      width: 90%;
+      margin: auto;
+      position: relative;
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+    #osmd-container svg {
+      display: inline-block;
+    }
+    #cursor {
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: red;
+      z-index: 10;
+      transition: left 0.05s linear;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="osmd-container"></div>
+    <div id="cursor"></div>
+  </div>
+  <audio id="audio" src="son/soliste.mp3" preload="auto"></audio>
+
+  <script src="main.js"></script>
+</body>
+</html>
