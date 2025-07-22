@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Partition avec Curseur et Audio</title>
+  <title>La progressivité en cartographie</title>
   <script src="https://cdn.jsdelivr.net/npm/opensheetmusicdisplay@1.5.4/build/opensheetmusicdisplay.min.js"></script>
-  <style>
-    #container {
-      width: 90%;
-      margin: auto;
-      position: relative;
-      overflow-x: scroll;
-      white-space: nowrap;
-    }
-    #osmd-container svg {
-      display: inline-block;
-    }
-    #cursor {
-      position: absolute;
-      top: 0;
-      width: 2px;
-      height: 100%;
-      background: red;
-      z-index: 10;
-      transition: left 0.05s linear;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="container">
-    <div id="osmd-container"></div>
-    <div id="cursor"></div>
+
+  <div id="home">
+    <h1>La progressivité en cartographie</h1>
+    <div id="layout">
+      <div class="btn-group">
+        <button class="btn" data-view="introduction" onclick="selectView('introduction')">Introduction</button>
+        <button class="btn" data-view="sequence" onclick="selectView('sequence')">La séquence</button>
+        <button class="btn" data-view="coherence" onclick="selectView('coherence')">La cohérence</button>
+        <button class="btn" data-view="sens" onclick="selectView('sens')">Le sens</button>
+        <button class="btn" data-view="rythme" onclick="selectView('rythme')">Le rythme</button>
+      </div>
+      <div id="content">
+        <h2 id="content-title">Introduction</h2>
+        <p id="content-text">Contenu à définir...</p>
+        <button id="continue-btn" class="btn" onclick="goToSelected()">Continuer →</button>
+        <div id="content-body" style="display: flex; align-items: center; gap: 20px;">
+        <img id="theme-image" src="" alt="" style="max-width: 200px; display: none; object-fit: contain;" />
+        <p id="content-text"></p>
   </div>
-  <audio id="audio" src="son/soliste.mp3" preload="auto"></audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue : Rythme -->
+  <div id="rythme-view" class="view hidden">
+    <h2>Le rythme</h2>
+    <div id="container">
+      <div id="osmd-container"></div>
+      <div id="cursor"></div>
+    </div>
+    <audio id="audio" src="son/soliste.mp3" preload="auto"></audio>
+    <button class="btn" onclick="goHome()">← Retour</button>
+  </div>
 
   <script src="main.js"></script>
 </body>

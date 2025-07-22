@@ -1,0 +1,178 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f7f7f7;
+}
+
+#home {
+  padding: 40px 5vw;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  color: #222;
+}
+
+#layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  min-width: 200px;
+  flex: 1 1 200px;
+  max-width: 250px;
+  align-items: flex-start;
+  padding-left: 40px;
+}
+
+.btn {
+  width: 80%;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #0077cc;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-align: left;
+}
+
+.btn:hover {
+  background-color: #005fa3;
+}
+
+.btn.selected {
+  background-color: #004477;
+}
+
+#content {
+  flex: 3 1 500px;
+  max-width: 800px;
+}
+
+#content-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+#continue-btn {
+  background-color: #28a745;
+}
+
+#continue-btn:hover {
+  background-color: #1e7e34;
+}
+
+.view {
+  padding: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+#container {
+  width: 90%;
+  margin: auto;
+  position: relative;
+  overflow-x: scroll;
+  white-space: nowrap;
+  height: 500px;
+  border: 1px solid #ccc;
+}
+
+#osmd-container svg {
+  display: inline-block;
+}
+
+#cursor {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: red;
+  z-index: 10;
+  transition: left 0.05s linear;
+}
+
+/* Responsive adaptation */
+@media (max-width: 768px) {
+  #layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-group {
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .btn {
+    text-align: center;
+  }
+
+  #content {
+    width: 100%;
+  }
+}
+
+/* Boutons à gauche */
+.btn {
+  width: 100%;
+  padding: 10px 15px;       /* réduit la hauteur */
+  font-size: 1rem;          /* réduit la taille du texte */
+  text-align: center;       /* centre le texte */
+}
+
+/* Bouton sélectionné (à gauche) */
+.btn.selected {
+  background-color: #004477;
+}
+
+/* Bouton "Continuer" */
+#continue-btn {
+  width: fit-content;
+  padding: 8px 20px;
+  font-size: 1rem;
+  background-color: #28a745;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+#continue-btn:hover {
+  background-color: #1e7e34;
+}
+
+#content-body {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#theme-image {
+  max-width: 750px;
+  min-width: 700px; /* pour forcer un minimum */
+  flex-shrink: 0;   /* ne pas rétrécir trop */
+  height: auto;
+  display: none;
+  object-fit: contain;
+}
+
+#content-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
