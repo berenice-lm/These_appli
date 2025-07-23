@@ -10,6 +10,7 @@ const osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("osmd-container", {
 const audio = document.getElementById("audio");
 const container = document.getElementById("container");
 const cursor = document.getElementById("cursor");
+const rythmeContainer = document.getElementById("rythme-image-container"); // ← ajouté
 
 const themeTexts = {
   introduction: "Introduction : La progressivité en cartographie désigne...",
@@ -22,28 +23,42 @@ const themeTexts = {
 function selectView(viewId) {
   selectedTheme = viewId;
 
-  // Mise à jour du texte et du titre
-  document.getElementById("content-title").textContent = formatTitle(viewId);
-  document.getElementById("content-text").textContent = themeTexts[viewId];
-
-  // Gestion des boutons sélectionnés
-  document.querySelectorAll(".btn-group .btn").forEach(btn => btn.classList.remove("selected"));
-  const btn = Array.from(document.querySelectorAll(".btn-group .btn")).find(b =>
-    b.textContent.toLowerCase().includes(viewId)
-  );
-  if (btn) btn.classList.add("selected");
-
-  // Gestion de l'image
+  const title = document.getElementById("content-title");
+  const text = document.getElementById("content-text");
   const img = document.getElementById("theme-image");
+
+  // Par défaut, on masque le conteneur spécial rythme
+  if (rythmeContainer) rythmeContainer.style.display = "none";
+
   if (viewId === "rythme") {
+    title.style.display = "none";
+    text.style.display = "none";
+
     img.src = "images/intro_rythme.png";
     img.alt = "Image introductive sur le rythme";
     img.style.display = "block";
+
+    // Affiche les textes et flèches uniquement pour le rythme
+    if (rythmeContainer) rythmeContainer.style.display = "block";
   } else {
-    img.style.display = "none";
+    title.textContent = formatTitle(viewId);
+    title.style.display = "block";
+
+    text.textContent = themeTexts[viewId];
+    text.style.display = "block";
+
     img.src = "";
     img.alt = "";
+    img.style.display = "none";
   }
+
+  // Mise à jour des boutons sélectionnés
+  document.querySelectorAll(".btn-group .btn").forEach(btn => {
+    btn.classList.remove("selected");
+    if (btn.dataset.view === viewId || btn.textContent.toLowerCase().includes(viewId)) {
+      btn.classList.add("selected");
+    }
+  });
 }
 
 function formatTitle(viewId) {

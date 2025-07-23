@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div id="home">
     <h1>La progressivité en cartographie</h1>
     <div id="layout">
@@ -18,19 +17,35 @@
         <button class="btn" data-view="sens" onclick="selectView('sens')">Le sens</button>
         <button class="btn" data-view="rythme" onclick="selectView('rythme')">Le rythme</button>
       </div>
+
       <div id="content">
         <h2 id="content-title">Introduction</h2>
         <p id="content-text">Contenu à définir...</p>
-        <button id="continue-btn" class="btn" onclick="goToSelected()">Continuer →</button>
-        <div id="content-body" style="display: flex; align-items: center; gap: 20px;">
-        <img id="theme-image" src="" alt="" style="max-width: 200px; display: none; object-fit: contain;" />
-        <p id="content-text"></p>
-  </div>
+
+        <div id="content-body" style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; max-width: none;">
+
+          <div id="rythme-image-container" style="display: none; position: relative; width: 100%; max-width: 900px; margin: 0 auto;">
+            <img id="theme-image" src="images/intro_rythme.png" alt="Image Rythme" style="width: 100%; height: auto; display: block;" />
+
+            <span class="overlay-text" style="position: absolute; top: 15%; left: 10%;">Texte 1</span>
+            <span class="overlay-text" style="position: absolute; top: 40%; left: 30%;">Texte 2</span>
+            <span class="overlay-text" style="position: absolute; top: 60%; left: 50%;">Texte 3</span>
+            <span class="overlay-text" style="position: absolute; top: 35%; left: 70%;">Texte 4</span>
+            <span class="overlay-text" style="position: absolute; top: 70%; left: 80%;">Texte 5</span>
+
+            <svg style="position: absolute; top: 18%; left: 20%; width: 80px; height: 20px;" viewBox="0 0 80 20"><line x1="0" y1="10" x2="70" y2="10" stroke="black" stroke-width="3"/><polygon points="70,5 70,15 80,10" fill="black"/></svg>
+            <svg style="position: absolute; top: 43%; left: 40%; width: 80px; height: 20px;" viewBox="0 0 80 20"><line x1="0" y1="10" x2="70" y2="10" stroke="black" stroke-width="3"/><polygon points="70,5 70,15 80,10" fill="black"/></svg>
+            <svg style="position: absolute; top: 45%; left: 55%; width: 20px; height: 80px;" viewBox="0 0 20 80"><line x1="10" y1="0" x2="10" y2="70" stroke="black" stroke-width="3"/><polygon points="5,70 15,70 10,80" fill="black"/></svg>
+            <svg style="position: absolute; top: 65%; left: 75%; width: 80px; height: 60px;" viewBox="0 0 80 60"><path d="M10 50 Q 40 10 70 50" fill="none" stroke="black" stroke-width="3"/><polygon points="65,45 70,50 65,55" fill="black"/></svg>
+            <svg style="position: absolute; top: 75%; left: 85%; width: 80px; height: 60px;" viewBox="0 0 80 60"><path d="M10 10 Q 40 50 70 10" fill="none" stroke="black" stroke-width="3"/><polygon points="65,5 70,10 65,15" fill="black"/></svg>
+          </div>
+
+          <button id="continue-btn" class="btn" onclick="goToSelected()">Continuer →</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Vue : Rythme -->
   <div id="rythme-view" class="view hidden">
     <h2>Le rythme</h2>
     <div id="container">
@@ -38,7 +53,7 @@
       <div id="cursor"></div>
     </div>
     <audio id="audio" src="son/soliste.mp3" preload="auto"></audio>
-    <button class="btn" onclick="goHome()">← Retour</button>
+    <button class="btn" onclick="goHome()" style="margin-top: 30px;">← Retour</button>
   </div>
 
   <script src="main.js"></script>

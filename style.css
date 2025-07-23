@@ -157,22 +157,52 @@ h1 {
 
 #content-body {
   display: flex;
+  flex-direction: column; /* image au-dessus, texte en-dessous */
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: none; /* enlève limite */
 }
 
+
 #theme-image {
-  max-width: 750px;
-  min-width: 700px; /* pour forcer un minimum */
-  flex-shrink: 0;   /* ne pas rétrécir trop */
+  display: block;
+  width: 100%;
+  max-width: none; /* enlève la limite */
   height: auto;
-  display: none;
   object-fit: contain;
+  margin: 0 auto 20px auto;
 }
 
 #content-text {
+  max-width: 750px;
   font-size: 1.2rem;
   line-height: 1.6;
-  margin-bottom: 30px;
+  text-align: justify;
+}
+
+#image-container {
+  position: relative;
+  width: 100%;
+  max-width: none;
+}
+#rythme-image-container {
+  position: relative;
+  max-width: 900px;
+  margin: 30px auto 0 auto;
+}
+
+.overlay-text {
+  position: absolute;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.overlay-text:hover {
+  color: #0077cc; /* couleur au survol, tu peux changer */
 }
